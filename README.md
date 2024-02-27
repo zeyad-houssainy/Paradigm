@@ -135,36 +135,37 @@ AND
 EG-E-All Tomorrow jobs
 
 ```python {"id":"01HQ81C0W3FB3GCGB125YE0Q9P"}
-project = MTP  AND Division = east AND labels not in (training)
-AND 
-(
-    "Drafter/Estimator" in (membersOf(Offshore-Egypt))
-    or
-    "2nd Reviewer Offshore"  in (membersOf(Offshore-Egypt))
-    or
-    "Reviewer Offshore"  in (membersOf(Offshore-Egypt))
-    or
+    project = MTP  AND Division = east AND labels not in (training)
+    AND 
     (
-        status = "Ready for Estimating"
-        and 
+        "Drafter/Estimator" in (membersOf(Offshore-Egypt))
+        or
+        "2nd Reviewer Offshore"  in (membersOf(Offshore-Egypt))
+        or
+        "Reviewer Offshore"  in (membersOf(Offshore-Egypt))
+        or
         (
-            "Drafter/Estimator" in  (EMPTY, "Select User")
-            or
-            "2nd Reviewer Offshore"  in  (EMPTY, "Select User")
-            or
-            "Reviewer Offshore"  in  (EMPTY, "Select User")
+            status = "Ready for Estimating"
+            and 
+            (
+                "Drafter/Estimator" in  (EMPTY, "Select User")
+                or
+                "2nd Reviewer Offshore"  in  (EMPTY, "Select User")
+                or
+                "Reviewer Offshore"  in  (EMPTY, "Select User")
+            )
         )
     )
-)
-AND 
-(
-    (status in ("Ready for Estimating", "In Progress", "Rework from QA", "Ready for Offshore Review", "In Offshore Review", "Ready for Project Creation", "Rework", "In 2nd Offshore Review", "Ready for 2nd Offshore Review", "waiting for dev"))
-)
+    AND 
+    (
+        (status in ("Ready for Estimating", "In Progress", "Rework from QA", "Ready for Offshore Review", "In Offshore Review", "Ready for Project Creation", "Rework", "In 2nd Offshore Review", "Ready for 2nd Offshore Review", "waiting for dev"))
+    )
 
-AND "Scheduling Type" != Exterior AND "Company Name" != "BFS - NicaES"  AND labels != ebn 
-AND 
-(
-    (duedate = startOfDay(1))
-
-)
+    AND "Scheduling Type" != Exterior AND "Company Name" != "BFS - NicaES"  AND labels != ebn 
+    AND 
+    (
+        (duedate = startOfDay(1))
+        or 
+        # (status was changed from "ready for estimating" to "in progress" after -3d) lessa bgrb hna fl goz2 da
+    )
 ```
