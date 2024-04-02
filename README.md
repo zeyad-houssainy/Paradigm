@@ -169,3 +169,36 @@ EG-E-All Tomorrow jobs
         # (status was changed from "ready for estimating" to "in progress" after -3d) lessa bgrb hna fl goz2 da
     )
 ```
+
+ETA sheet
+
+```python
+project = MTP and labels not in (training) and "Scheduling Type" = Estimating and  duedate >= 2023-1-1 and status in ("In Progress", "Ready for Offshore Review", "In Offshore Review", "Ready for 2nd Offshore Review", "In 2nd Offshore Review", "Rework from QA", Rework) and
+(
+    # Anyone working on the east pod projects
+    (
+        Division = East 
+        and 
+        (
+            "Drafter/Estimator" in (membersOf(Offshore-Egypt)) 
+            or
+            "Reviewer Offshore" in (membersOf(Offshore-Egypt)) 
+            or
+            "2nd Reviewer Offshore" in (membersOf(Offshore-Egypt))
+        )
+    )
+    or 
+    # Anyone from the east pod working on a pod different than the eastpod
+    (
+        Division != East
+        and
+        (
+            "Drafter/Estimator" in (Mahmoud.Burhamy, Nada.Hanafy, Ahmed.Tarek,Zeyad.Al-Houssainy, Ahmed.Abdelsatar, Ahmed.Khaled, Hayat.Magdy, Toka.Mohamed , AbdelRahman.Elsayed ,Mohamed.Badawy , Abdelrahman.Shenhaby ,  Ola.Salaheldeen , Ahmed.Hesham ,  Enas.Ahmed , Bassant.Mohamed , Aya.Hesham ,  Mohamed.Elwany , Rowan.Mohamed , Reem.AbdelKhalek , Mahmoud.Yasser , Lara.Mohamed , AsmaaAbd.Elrehim , Abdullatif.Muhammed , Hebatullah.Ashraf , Radwa.Saady , Mostafa.Zeidy , Sara.AlGhonaimy, Sara.Yassin , Nada.Mohamed , Ahmed.Ali ,  Menna.Youssef , Menna.Ibrahim , Nadia.Aly , Hagar.Magdi , Sarah.Alattar , Yasmine.Mohsen , Amira.Said, Esraa.Ayman , Toqaallah.Khaled ,  Farah.Hazem ,Engy.Ibrahim , Hebatullah.Zein ,Mohab.Kobisy, Basher.Badawy ,Rewaa.Mohamed  , Mohamed.Kotb ,Rowana.Fathy , Hesham.Elzalabany , Donia.Hassan , Omnia.SalahEldeen, Amr.Abdelkarim , Fatma.Mofeed , Noha.Mostafa , Mai.Ahmed ,  Mariam.Douban , Mayar.Amr,Mustafa.Madboly, AbdelRahman.Elsayed, Rana.Elsayed,Essam.Galal, Yosra.Helal, Alaa.Esmail, Mohamed.Rashad, Lamis.Waheeb ,Mohamed.Amer,Sara.Ragab,Toka.Salah , Aya.Ehab, Mahmoud.Yasser , Mohamed.Badawy)
+            or
+            "Reviewer Offshore" in (Mahmoud.Burhamy, Nada.Hanafy, Ahmed.Tarek,Zeyad.Al-Houssainy, Ahmed.Abdelsatar, Ahmed.Khaled, Hayat.Magdy, Toka.Mohamed , AbdelRahman.Elsayed ,Mohamed.Badawy , Abdelrahman.Shenhaby ,  Ola.Salaheldeen , Ahmed.Hesham ,  Enas.Ahmed , Bassant.Mohamed , Aya.Hesham ,  Mohamed.Elwany , Rowan.Mohamed , Reem.AbdelKhalek , Mahmoud.Yasser , Lara.Mohamed , AsmaaAbd.Elrehim , Abdullatif.Muhammed , Hebatullah.Ashraf , Radwa.Saady , Mostafa.Zeidy , Sara.AlGhonaimy, Sara.Yassin , Nada.Mohamed , Ahmed.Ali ,  Menna.Youssef , Menna.Ibrahim , Nadia.Aly , Hagar.Magdi , Sarah.Alattar , Yasmine.Mohsen , Amira.Said, Esraa.Ayman , Toqaallah.Khaled ,  Farah.Hazem ,Engy.Ibrahim , Hebatullah.Zein ,Mohab.Kobisy, Basher.Badawy ,Rewaa.Mohamed  , Mohamed.Kotb ,Rowana.Fathy , Hesham.Elzalabany , Donia.Hassan , Omnia.SalahEldeen, Amr.Abdelkarim , Fatma.Mofeed , Noha.Mostafa , Mai.Ahmed ,  Mariam.Douban , Mayar.Amr,Mustafa.Madboly, AbdelRahman.Elsayed, Rana.Elsayed,Essam.Galal, Yosra.Helal, Alaa.Esmail, Mohamed.Rashad, Lamis.Waheeb ,Mohamed.Amer,Sara.Ragab,Toka.Salah , Aya.Ehab, Mahmoud.Yasser , Mohamed.Badawy) 
+            or
+            "2nd Reviewer Offshore" in (Mahmoud.Burhamy, Nada.Hanafy, Ahmed.Tarek,Zeyad.Al-Houssainy, Ahmed.Abdelsatar, Ahmed.Khaled, Hayat.Magdy, Toka.Mohamed , AbdelRahman.Elsayed ,Mohamed.Badawy , Abdelrahman.Shenhaby ,  Ola.Salaheldeen , Ahmed.Hesham ,  Enas.Ahmed , Bassant.Mohamed , Aya.Hesham ,  Mohamed.Elwany , Rowan.Mohamed , Reem.AbdelKhalek , Mahmoud.Yasser , Lara.Mohamed , AsmaaAbd.Elrehim , Abdullatif.Muhammed , Hebatullah.Ashraf , Radwa.Saady , Mostafa.Zeidy , Sara.AlGhonaimy, Sara.Yassin , Nada.Mohamed , Ahmed.Ali ,  Menna.Youssef , Menna.Ibrahim , Nadia.Aly , Hagar.Magdi , Sarah.Alattar , Yasmine.Mohsen , Amira.Said, Esraa.Ayman , Toqaallah.Khaled ,  Farah.Hazem ,Engy.Ibrahim , Hebatullah.Zein ,Mohab.Kobisy, Basher.Badawy ,Rewaa.Mohamed  , Mohamed.Kotb ,Rowana.Fathy , Hesham.Elzalabany , Donia.Hassan , Omnia.SalahEldeen, Amr.Abdelkarim , Fatma.Mofeed , Noha.Mostafa , Mai.Ahmed ,  Mariam.Douban , Mayar.Amr,Mustafa.Madboly, AbdelRahman.Elsayed, Rana.Elsayed,Essam.Galal, Yosra.Helal, Alaa.Esmail, Mohamed.Rashad, Lamis.Waheeb ,Mohamed.Amer,Sara.Ragab,Toka.Salah , Aya.Ehab, Mahmoud.Yasser , Mohamed.Badawy)
+        )
+    )
+)
+
